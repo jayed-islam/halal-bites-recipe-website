@@ -1,14 +1,25 @@
 import { Link } from "react-router-dom";
 import { navConfig } from "./config-navigation";
-
+import { FcGoogle } from "react-icons/fc";
+import { useContext } from "react";
+import { AppContext } from "../../context/auth-context";
+import { paths } from "../paths";
+import { Button } from "@headlessui/react";
+import ProfilePopover from "../../components/profile-popover";
 const Header = () => {
+  const { user, googleSignIn } = useContext(AppContext);
+
+  console.log(user);
+
   return (
-    <header className="bg-white">
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+    <header className="w-full bg-white z-20 sticky top-0 border-b shadow">
+      <div className="mx-auto max-w-6xl px-5 xl:px-0">
         <div className="flex h-16 items-center justify-between">
           <div className="md:flex md:items-center md:gap-12">
-            <Link className="block text-teal-600" to="#">
-              <span className="sr-only">Home</span>
+            <Link
+              className="block font-bold text-3xl text-teal-600 pacifico-regular"
+              to="#"
+            >
               HalalBites
             </Link>
           </div>
@@ -26,28 +37,33 @@ const Header = () => {
                     </Link>
                   </li>
                 ))}
+
+                {user && user?.email && (
+                  <li>
+                    <Link
+                      className="text-gray-500 transition hover:text-gray-500/75"
+                      to={paths.recipe.addrecipe}
+                    >
+                      Add Recipe
+                    </Link>
+                  </li>
+                )}
               </ul>
             </nav>
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="sm:flex sm:gap-4">
-              <a
-                className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
-                href="#"
+            {user && user?.email ? (
+              <ProfilePopover />
+            ) : (
+              <Button
+                onClick={() => googleSignIn()}
+                className="flex items-center gap-2 rounded-full bg-white/10 py-2 px-5  font-semibold  transition data-[hover]:scale-105 data-[hover]:bg-white/15 border shadow"
               >
-                Login
-              </a>
-
-              <div className="hidden sm:flex">
-                <a
-                  className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600"
-                  href="#"
-                >
-                  Register
-                </a>
-              </div>
-            </div>
+                <FcGoogle className="text-[21px]" />
+                <span>Login</span>
+              </Button>
+            )}
 
             <div className="block md:hidden">
               <button className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
