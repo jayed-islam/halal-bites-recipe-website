@@ -1,4 +1,3 @@
-import React from "react";
 import { MdOutlineMail } from "react-icons/md";
 import { IoCallOutline } from "react-icons/io5";
 import { IoLogoGithub } from "react-icons/io5";

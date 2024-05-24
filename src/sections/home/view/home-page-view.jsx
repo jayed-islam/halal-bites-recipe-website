@@ -1,11 +1,13 @@
 import HomeBannerSection from "../home-banner-section";
-// import HomeRecipeView from "../home-recipe-view";
+import HomeDevInfo from "../home-dev-info";
+import HomeSummarySection from "../home-summary-section";
 
 const HomePageView = () => {
   return (
     <>
-      {/* <HomeRecipeView /> */}
       <HomeBannerSection />
+      <HomeSummarySection />
+      <HomeDevInfo />
     </>
   );
 };

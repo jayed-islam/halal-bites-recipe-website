@@ -4,18 +4,39 @@ import { paths } from "../layouts/paths";
 import pasta from "../assets/images/pasta.jpg";
 import tableFood from "../assets/images/table-food.jpg";
 import thai from "../assets/images/thai.jpg";
+import recipes from "../assets/icons/halo-halo.png";
+import users from "../assets/icons/programmer.png";
+import since from "../assets/icons/since.png";
+
+export const summeryItem = [
+  {
+    title: "Total Users",
+    icon: users,
+    count: 5031,
+  },
+  {
+    title: "Our Recipes",
+    icon: recipes,
+    count: 351,
+  },
+  {
+    title: "Since From",
+    icon: since,
+    count: 2023,
+  },
+];
 
 export const courouselItems = [
   {
-    title: "",
+    title: "Delicious Recipes With wonderful Eating",
     banner: pasta,
   },
   {
-    title: "",
+    title: "Experience the Essence of Halal Cuisine. Fresh, Flavorful.",
     banner: tableFood,
   },
   {
-    title: "",
+    title: "Simple Recipes, Extraordinary Taste. Quick and Halal.",
     banner: thai,
   },
 ];
