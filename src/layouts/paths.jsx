@@ -2,7 +2,7 @@ export const paths = {
   root: "/",
   home: "/",
   recipe: {
-    allrecipes: "/recipes",
+    allrecipes: "/all-recipes",
     addrecipe: "add-recipe",
   },
 };

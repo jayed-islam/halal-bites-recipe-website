@@ -5,6 +5,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { GoArrowRight } from "react-icons/go";
 import { FiPlus } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import { paths } from "../../layouts/paths";
 
 const HomeBannerSection = () => {
   const settings = {
@@ -37,10 +39,13 @@ const HomeBannerSection = () => {
                   experience with every bite.
                 </p>
                 <div className="flex items-center gap-5 mt-7">
-                  <button className="border-2 border-green-500 px-7 py-2 rounded-full flex items-center gap-2 text-white hover:bg-green-500 transition-all duration-200 group">
+                  <Link
+                    to={paths.recipe.allrecipes}
+                    className="border-2 border-green-500 px-7 py-2 rounded-full flex items-center gap-2 text-white hover:bg-green-500 transition-all duration-200 group"
+                  >
                     <span>See Recipes</span>
                     <GoArrowRight className="group-hover:translate-x-2 transition-all duration-200" />
-                  </button>
+                  </Link>
                   <button className="border-2 border-green-500 px-7 py-2 rounded-full flex items-center gap-2 text-white bg-green-500 transition-all duration-200 group hover:translate-x-2">
                     Add Recipes
                     <FiPlus className="group-hover:rotate-180 transition-all duration-200" />
