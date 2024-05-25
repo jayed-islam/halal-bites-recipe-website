@@ -53,3 +53,12 @@ export const profileItems = [
     path: paths.root,
   },
 ];
+
+export const countries = [
+  { name: "Wade Cooper" },
+  { name: "Arlene Mccoy" },
+  { name: "Devon Webb" },
+  { name: "Tom Cook" },
+  { name: "Tanya Fox" },
+  { name: "Hellen Schmidt" },
+];

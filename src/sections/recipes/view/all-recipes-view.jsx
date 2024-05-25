@@ -1,5 +1,6 @@
 import PageBanner from "../../../components/page-banner";
 import { paths } from "../../../layouts/paths";
+import AllRecipesToolBar from "../common/all-recipes-view-toolbar";
 
 const AllRecipesView = () => {
   const breadCrumbs = [
@@ -15,6 +16,7 @@ const AllRecipesView = () => {
   return (
     <div>
       <PageBanner title="Our Delicious Recipes" breadCrumbs={breadCrumbs} />
+      <AllRecipesToolBar />
     </div>
   );
 };
