@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import AllRecipesView from "../../sections/recipes/view/all-recipes-view";
+import { AllRecipesView } from "../../sections/recipes/view";
 
 const AllRecipesPage = () => {
   return (

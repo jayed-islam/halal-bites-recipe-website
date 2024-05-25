@@ -2,6 +2,7 @@ import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { countries } from "../../../constants";
+import { BsArrowRightCircle } from "react-icons/bs";
 
 const AllRecipesToolBar = () => {
   const [selected, setSelected] = useState(countries[0]);
@@ -72,8 +73,11 @@ const AllRecipesToolBar = () => {
               </div>
             </Listbox>
           </div>
-          <button className="w-full lg:w-1/3 border px-6 shadow-sm py-3 rounded-full bg-green-500 hover:bg-slate-800 transition-all duration-150 text-white text-center">
-            Search
+          <button className="w-full lg:w-1/3 border px-6 shadow-sm py-3 rounded-full bg-green-500 hover:bg-slate-800 transition-all duration-150 text-white text-center flex items-center group gap-3 justify-center overflow-hidden">
+            <BsArrowRightCircle className="lg:-translate-x-16 group-hover:translate-x-1 transition-all duration-200" />
+            <span className="-translate-x-3 group-hover:translate-x-0 transition-all duration-200">
+              Search
+            </span>
           </button>
         </div>
       </div>

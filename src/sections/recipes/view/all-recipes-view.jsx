@@ -1,5 +1,6 @@
 import PageBanner from "../../../components/page-banner";
 import { paths } from "../../../layouts/paths";
+import AllRecipesSection from "../all-recipes-section";
 import AllRecipesToolBar from "../common/all-recipes-view-toolbar";
 
 const AllRecipesView = () => {
@@ -17,6 +18,7 @@ const AllRecipesView = () => {
     <div>
       <PageBanner title="Our Delicious Recipes" breadCrumbs={breadCrumbs} />
       <AllRecipesToolBar />
+      <AllRecipesSection />
     </div>
   );
 };
