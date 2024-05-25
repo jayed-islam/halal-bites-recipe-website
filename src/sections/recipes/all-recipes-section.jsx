@@ -1,6 +1,9 @@
 import image from "../../assets/images/table-food.jpg";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { FaRegFlag } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa6";
+// import { FaHeart } from "react-icons/fa6";
+import { LuView } from "react-icons/lu";
 
 const AllRecipesSection = () => {
   return (
@@ -9,9 +12,9 @@ const AllRecipesSection = () => {
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => (
           <div
             key={index}
-            className="w-full rounded-2xl border group hover:-translate-y-2 transition-all duration-300 shadow-md bg-white h-72 cursor-pointer"
+            className="w-full rounded-lg border group hover:-translate-y-2 transition-all duration-300 shadow-md bg-white cursor-pointer"
           >
-            <div className="w-full h-48 overflow-hidden rounded-t-2xl relative ">
+            <div className="w-full h-48 overflow-hidden rounded-t-lg relative ">
               <div className="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-30">
                 <h2 className="text-xl font-semibold text-white text-center absolute bottom-3 left-0 right-0">
                   Spicy Shandwitch
@@ -20,19 +23,11 @@ const AllRecipesSection = () => {
               <img
                 src={image}
                 alt=""
-                className="w-full h-full object-cover transition-all duration-300 rounded-t-2xl"
+                className="w-full h-full object-cover transition-all duration-300 rounded-t-lg"
               />
             </div>
 
             <div className="p-5 relative">
-              {/* <div className="absolute h-16 w-16 rounded-full -top-8 border p-1 border-white">
-                <img
-                  src="https://img.freepik.com/free-photo/close-up-portrait-man-looking-camera-outdoors_23-2148283854.jpg?t=st=1716647006~exp=1716650606~hmac=f2b7ad61823b891dc7afbf66cf0386bdbd0a603e438ae60ff4b4e61c688bed1d&w=740"
-                  className="h-full w-full rounded-full"
-                  alt=""
-                />
-              </div> */}
-
               <div className="flex items-center gap-3 -mt-2">
                 <MdOutlineMailOutline className="text-green-500 text-xl" />
                 <span className="">creatoremail@gmail.com</span>
@@ -40,6 +35,42 @@ const AllRecipesSection = () => {
               <div className="flex items-center gap-3.5">
                 <FaRegFlag className="text-green-500 text-lg" />
                 <span className="">Bangladesh</span>
+              </div>
+
+              <div className="flex items-center justify-between mt-3">
+                <h2 className="font-semibold">Purched:</h2>
+                <div className="flex -space-x-1 overflow-hidden">
+                  <img
+                    className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
+                    src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    alt=""
+                  />
+                  <img
+                    className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
+                    src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    alt=""
+                  />
+                  <img
+                    className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
+                    alt=""
+                  />
+                  <img
+                    className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    alt=""
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 mt-5 group">
+                <button className="bg-green-500 flex items-center justify-center py-2 rounded-lg text-white gap-3 w-full text-sm ">
+                  <LuView className="text-lg  group-hover:rotate-180" />
+                  View The Recipe
+                </button>
+                <div className="border-2 p-2 border-gray-500 rounded-lg">
+                  <FaRegHeart />
+                </div>
               </div>
             </div>
           </div>
