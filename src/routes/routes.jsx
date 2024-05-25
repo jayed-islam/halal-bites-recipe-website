@@ -3,6 +3,7 @@ import MainLayout from "../layouts/main";
 import HomePage from "../pages/home/home";
 import AllRecipesPage from "../pages/recipes/all-recipes";
 import AddRecipePage from "../pages/recipes/add-recipe";
+import DetailsRecipePage from "../pages/recipes/details";
 
 const routes = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const routes = createBrowserRouter([
       {
         path: "add-recipe",
         element: <AddRecipePage />,
+      },
+      {
+        path: "/recipe/:id",
+        element: <DetailsRecipePage />,
       },
     ],
   },

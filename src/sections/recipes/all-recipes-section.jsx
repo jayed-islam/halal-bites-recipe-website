@@ -4,13 +4,16 @@ import { FaRegFlag } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa6";
 // import { FaHeart } from "react-icons/fa6";
 import { LuView } from "react-icons/lu";
+import { Link } from "react-router-dom";
+import { paths } from "../../layouts/paths";
 
 const AllRecipesSection = () => {
   return (
     <div className="max-w-6xl mx-auto px-5 sm:px-20 md:px-11 lg:px-5 xl:px-0 mt-9 mb-16">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-5">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => (
-          <div
+          <Link
+            to={`${paths.recipe.root}/${index}`}
             key={index}
             className="w-full rounded-lg border group hover:-translate-y-2 transition-all duration-300 shadow-md bg-white cursor-pointer"
           >
@@ -73,7 +76,7 @@ const AllRecipesSection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

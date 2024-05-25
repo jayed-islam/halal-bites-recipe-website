@@ -7,6 +7,7 @@ import RHFTextareaField from "../../components/react-hook-form/rhf-textarea-fiel
 import { useContext, useState } from "react";
 import { IoImagesOutline } from "react-icons/io5";
 import { AppContext } from "../../context/auth-context";
+import { uploadImageOnImgbb } from "../../utils/upload-imag-imgbb";
 
 const AddRecipeFormView = () => {
   const { user } = useContext(AppContext);
@@ -31,14 +32,18 @@ const AddRecipeFormView = () => {
         return;
       }
 
-      const newData = {
-        ...data,
-        creatorEmail: user && user.email,
-        watchCount: 0,
-        purchased_by: [],
-      };
+      if (file !== null) {
+        const imgData = await uploadImageOnImgbb(file);
+        const newData = {
+          ...data,
+          creatorEmail: user && user.email,
+          watchCount: 0,
+          purchased_by: [],
+          recipeImage: imgData,
+        };
 
-      console.log("newData", newData);
+        console.log("newData", newData);
+      }
     } catch (error) {
       console.log(error);
     }
