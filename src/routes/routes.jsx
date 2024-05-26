@@ -4,6 +4,8 @@ import HomePage from "../pages/home/home";
 import AllRecipesPage from "../pages/recipes/all-recipes";
 import AddRecipePage from "../pages/recipes/add-recipe";
 import DetailsRecipePage from "../pages/recipes/details";
+import PurchaseCoinPage from "../pages/purchase/purchase";
+import PaymentPage from "../pages/purchase/payment";
 
 const routes = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ const routes = createBrowserRouter([
       {
         path: "/recipe/:id",
         element: <DetailsRecipePage />,
+      },
+      {
+        path: "/purchase",
+        element: <PurchaseCoinPage />,
+      },
+      {
+        path: "/payment/:id",
+        element: <PaymentPage />,
       },
     ],
   },

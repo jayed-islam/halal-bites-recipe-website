@@ -9,6 +9,21 @@ export const recipeApi = api.injectEndpoints({
       }),
       invalidatesTags: ["recipes"],
     }),
+    reactRecipeByUser: builder.mutation({
+      query: ({ id, body }) => ({
+        url: `/recipe/${id}/reactions`,
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["single-recipe"],
+    }),
+    getSingleRecipe: builder.query({
+      query: (id) => ({
+        url: `/recipe/get-one/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["single-recipe"],
+    }),
     getAllRecipes: builder.query({
       query: ({ pageNumber = 1, pageSize = 11, category, country, search }) => {
         let query = `/recipe/get-all-recipes?pageNumber=${pageNumber}&pageSize=${pageSize}`;
@@ -32,7 +47,21 @@ export const recipeApi = api.injectEndpoints({
       },
       providesTags: ["Recipes"],
     }),
+    confirmRecipeTrns: builder.mutation({
+      query: (body) => ({
+        url: "/recipe/confirm",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["single-recipe"],
+    }),
   }),
 });
 
-export const { useCreateRecipeMutation, useGetAllRecipesQuery } = recipeApi;
+export const {
+  useCreateRecipeMutation,
+  useGetAllRecipesQuery,
+  useConfirmRecipeTrnsMutation,
+  useGetSingleRecipeQuery,
+  useReactRecipeByUserMutation,
+} = recipeApi;
