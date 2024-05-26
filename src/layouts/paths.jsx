@@ -6,4 +6,5 @@ export const paths = {
     allrecipes: "/all-recipes",
     addrecipe: "add-recipe",
   },
+  purchase: "/purchase",
 };

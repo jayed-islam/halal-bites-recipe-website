@@ -8,11 +8,14 @@ import { useContext, useState } from "react";
 import { IoImagesOutline } from "react-icons/io5";
 import { AppContext } from "../../context/auth-context";
 import { uploadImageOnImgbb } from "../../utils/upload-imag-imgbb";
+import { useCreateRecipeMutation } from "../../redux/reducers/recipe/recipeApi";
+import toast from "react-hot-toast";
 
 const AddRecipeFormView = () => {
   const { user } = useContext(AppContext);
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
+  const [submitLoading, setSubmitLoading] = useState(false);
   const [recipeImageError, setRecipeImageError] = useState(false);
   const methods = useForm({
     mode: "onSubmit",
@@ -21,14 +24,19 @@ const AddRecipeFormView = () => {
 
   const {
     handleSubmit,
+    reset,
     formState: { isSubmitting, errors },
   } = methods;
 
+  const [createRecipe] = useCreateRecipeMutation();
+
   const onSubmit = handleSubmit(async (data) => {
     console.log("data", data);
+    setSubmitLoading(true);
     try {
       if (!preview) {
         setRecipeImageError(true);
+        setSubmitLoading(false);
         return;
       }
 
@@ -41,11 +49,16 @@ const AddRecipeFormView = () => {
           purchased_by: [],
           recipeImage: imgData,
         };
-
-        console.log("newData", newData);
+        const res = await createRecipe(newData).unwrap();
+        console.log("rexponse", res);
+        if (res.success) {
+          setSubmitLoading(false);
+          toast.success(res.message);
+        }
       }
     } catch (error) {
       console.log(error);
+      setSubmitLoading(false);
     }
   });
 
@@ -55,6 +68,7 @@ const AddRecipeFormView = () => {
     { value: "soupsStews", label: "Soups and Stews" },
     { value: "salads", label: "Salads" },
     { value: "snacks", label: "Snacks" },
+    { value: "mexican", label: "Mexican" },
   ];
 
   const handleFileChange = (e) => {
@@ -138,11 +152,15 @@ const AddRecipeFormView = () => {
 
             <div className="flex items-center justify-end">
               <button
-                className="w-full lg:w-1/2 shrink-0 rounded-md border border-green-500 bg-green-500 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-green-500 focus:outline-none focus:ring active:text-green-500"
+                className="w-full lg:w-1/2 shrink-0 rounded-md border border-green-500 bg-green-500 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-green-500 focus:outline-none focus:ring active:text-green-500 flex items-center justify-center"
                 type="submit"
-                disabled={isSubmitting}
+                disabled={submitLoading}
               >
-                Add Recipe
+                {submitLoading ? (
+                  <div className="w-7 h-7 border-4 border-dashed border-white rounded-full animate-spin "></div>
+                ) : (
+                  <span>Add Recipe</span>
+                )}
               </button>
             </div>
           </div>

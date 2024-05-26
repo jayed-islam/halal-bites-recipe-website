@@ -3,7 +3,7 @@ const DetailsRecipeView = () => {
     <div className="max-w-6xl mx-auto px-5 sm:px-20 md:px-11 lg:px-5 xl:px-0 mt-9 mb-16">
       <div className="flex items-start gap-7 flex-col lg:flex-row">
         <div className="w-full">
-          <iframe
+          <iframe 
             className="w-full h-[301px] lg:h-[400px]"
             src="https://www.youtube.com/embed/PvYv3y7TYtI?si=SAeynrGmoPsw32IF"
             title="YouTube video player"
