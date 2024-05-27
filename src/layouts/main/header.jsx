@@ -14,7 +14,6 @@ const Header = () => {
   const { user, googleSignIn } = useContext(AppContext);
   const { user: currentUser } = useSelector((state) => state.auth);
 
-  console.log(user);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -31,14 +30,14 @@ const Header = () => {
           </div>
 
           <div
-            className={`md:hidden h-screen bg-white  top-0 bottom-0 left-0 absolute  border-r md:border-none shadow pt-11 z-30 transition-all duration-200  ${
-              isOpen ? "w-[251px]  left-0" : "w-[-300px] -left-[251px]"
+            className={` md:hidden h-screen bg-white top-0 bottom-0  absolute  border-r md:border-none shadow pt-11 z-30 transition-all duration-200  ${
+              isOpen ? "w-[251px] left-0" : "-left-[251px]"
             }`}
           >
             <Link
               onClick={() => setIsOpen((prev) => !prev)}
               to={paths.root}
-              className="text-teal-700 font-bold px-5 mb-9 text-xl pacifico-regular"
+              className="text-teal-700 font-bold px-5 mb-9 text-xl pacifico-regular "
             >
               HalalBites
             </Link>
