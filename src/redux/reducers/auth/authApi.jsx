@@ -33,26 +33,12 @@ export const authApi = api.injectEndpoints({
         }
       },
     }),
-    updateUserData: builder.mutation({
+    purchaseCoin: builder.mutation({
       query: ({ _id, ...body }) => ({
-        url: `/auth/update/me`,
-        method: "PATCH",
+        url: `/auth/purchase-coin`,
+        method: "POST",
         body,
       }),
-      async onQueryStarted({ _id, ...body }, { dispatch, queryFulfilled }) {
-        try {
-          const { data } = await queryFulfilled;
-          // courseApi.util.updateQueryData(
-          //   "getSingleCourse",
-          //   _id as string,
-          //   (draft) => {
-          //     draft.data = data?.data;
-          //   }
-          // );
-        } catch (error) {
-          console.error("Failed to update user data:", error);
-        }
-      },
       invalidatesTags: ["user-me"],
     }),
   }),
@@ -60,6 +46,6 @@ export const authApi = api.injectEndpoints({
 
 export const {
   useGetUserDataQuery,
-  useUpdateUserDataMutation,
   useCreateUserMutation,
+  usePurchaseCoinMutation,
 } = authApi;

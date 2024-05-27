@@ -6,8 +6,12 @@ import { AppContext } from "../../context/auth-context";
 import { paths } from "../paths";
 import { Button } from "@headlessui/react";
 import ProfilePopover from "../../components/profile-popover";
+import { useSelector } from "react-redux";
+import { PiCoinsThin } from "react-icons/pi";
+
 const Header = () => {
   const { user, googleSignIn } = useContext(AppContext);
+  const { user: currentUser } = useSelector((state) => state.auth);
 
   console.log(user);
 
@@ -54,7 +58,15 @@ const Header = () => {
 
           <div className="flex items-center gap-4">
             {user && user?.email ? (
-              <ProfilePopover />
+              <div className="flex items-center gap-5">
+                <div className="flex items-center gap-2">
+                  <h2 className="hidden sm:flex text-sm">My Coin:</h2>
+                  <div className="border bg-green-500 sm:text-sm rounded-3xl px-2 sm:px-3 py-1 text-xs sm:py-2 text-white font-semibold">
+                    {currentUser.coin}
+                  </div>
+                </div>
+                <ProfilePopover />
+              </div>
             ) : (
               <Button
                 onClick={() => googleSignIn()}

@@ -1,9 +1,14 @@
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 const PurchaseCoinView = () => {
   const purchaseOptions = [
     { coins: 100, dollars: 1 },
     { coins: 500, dollars: 5 },
     { coins: 1000, dollars: 10 },
   ];
+
+  const { user } = useSelector((state) => state.auth);
   return (
     <div className="max-w-6xl mx-auto px-5 sm:px-20 md:px-11 lg:px-5 xl:px-0 mt-9 mb-16 pb-32">
       <div className="flex flex-col items-center justify-center">
@@ -21,8 +26,17 @@ const PurchaseCoinView = () => {
               <p className="text-gray-700 text-base">
                 Purchase for ${option.dollars}
               </p>
-              <button className="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                Purchase
+              <button className="mt-4">
+                <Link
+                  state={{
+                    ...option,
+                    userId: user?._id,
+                  }}
+                  to={`/payment/${option.dollars}`}
+                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Purchase
+                </Link>
               </button>
             </div>
           </div>
