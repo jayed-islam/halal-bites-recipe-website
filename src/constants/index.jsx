@@ -62,3 +62,13 @@ export const countries = [
   { name: "Tanya Fox" },
   { name: "Hellen Schmidt" },
 ];
+
+export const categories = [
+  { value: "appetizers", label: "Reset" },
+  { value: "desserts", label: "Desserts" },
+  { value: "soupsStews", label: "Soups and Stews" },
+  { value: "salads", label: "Salads" },
+  { value: "snacks", label: "Snacks" },
+  { value: "mexican", label: "Mexican" },
+  { value: "deshiDish", label: "Deshi Dish" },
+];

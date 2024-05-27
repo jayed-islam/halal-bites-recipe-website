@@ -6,10 +6,12 @@ import { IoLogOutOutline } from "react-icons/io5";
 import { Fragment, useContext } from "react";
 import { AppContext } from "../context/auth-context";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 export default function ProfilePopover() {
   const { user, logOut } = useContext(AppContext);
-  console.log(user);
+
+  const { user: currentUser } = useSelector((state) => state.auth);
 
   const handleLogout = () => {
     logOut();
@@ -45,7 +47,12 @@ export default function ProfilePopover() {
               <div className="mt-3">
                 <button className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-150 w-full">
                   <PiCoinsThin />
-                  <span>Coins</span>
+                  <span>
+                    Coins:{" "}
+                    <span className="text-green-500 font-semibold">
+                      {currentUser?.coin}
+                    </span>
+                  </span>
                 </button>
                 <button
                   onClick={handleLogout}

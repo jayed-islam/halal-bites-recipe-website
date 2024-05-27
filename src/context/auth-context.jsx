@@ -26,7 +26,7 @@ const AuthContext = ({ children }) => {
   const googleProvider = new GoogleAuthProvider();
 
   const googleSignIn = async () => {
-    signInWithPopup(auth, googleProvider)
+    return signInWithPopup(auth, googleProvider)
       .then(async (res) => {
         const user = res.user;
         const userData = {

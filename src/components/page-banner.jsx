@@ -8,7 +8,7 @@ const PageBanner = ({ title, breadCrumbs }) => {
   return (
     <div className="relative w-full h-64">
       <div className="absolute bg-[#231f40c4] top-0 left-0 right-0 bottom-0">
-        <div className="flex items-start max-w-6xl mx-auto inset-0 justify-center h-full flex-col">
+        <div className="flex items-start max-w-6xl mx-auto inset-0 justify-center h-full flex-col px-5 xl:px-0">
           <h2 className=" text-2xl md:text-4xl font-semibold text-white">
             {title}
           </h2>

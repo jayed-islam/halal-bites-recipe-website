@@ -10,6 +10,7 @@ import { AppContext } from "../../context/auth-context";
 import { uploadImageOnImgbb } from "../../utils/upload-imag-imgbb";
 import { useCreateRecipeMutation } from "../../redux/reducers/recipe/recipeApi";
 import toast from "react-hot-toast";
+import { categories } from "../../constants";
 
 const AddRecipeFormView = () => {
   const { user } = useContext(AppContext);
@@ -54,6 +55,8 @@ const AddRecipeFormView = () => {
         if (res.success) {
           setSubmitLoading(false);
           toast.success(res.message);
+        } else {
+          toast.error(res.message);
         }
       }
     } catch (error) {
@@ -61,15 +64,6 @@ const AddRecipeFormView = () => {
       setSubmitLoading(false);
     }
   });
-
-  const options = [
-    { value: "appetizers", label: "Appetizers" },
-    { value: "desserts", label: "Desserts" },
-    { value: "soupsStews", label: "Soups and Stews" },
-    { value: "salads", label: "Salads" },
-    { value: "snacks", label: "Snacks" },
-    { value: "mexican", label: "Mexican" },
-  ];
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files?.[0];
@@ -141,7 +135,7 @@ const AddRecipeFormView = () => {
             <RHFSelectField
               label="Category"
               name="category"
-              options={options}
+              options={categories}
               rules={{ required: "Category is required" }}
             />
             <RHFTextareaField

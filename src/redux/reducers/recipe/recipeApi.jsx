@@ -23,6 +23,14 @@ export const recipeApi = api.injectEndpoints({
         method: "GET",
       }),
       providesTags: ["single-recipe"],
+      invalidatesTags: ["category"],
+    }),
+    getCategoryBasedRecipe: builder.query({
+      query: (category) => ({
+        url: `/recipe/suggestions?category=${category}`,
+        method: "GET",
+      }),
+      providesTags: ["category"],
     }),
     getAllRecipes: builder.query({
       query: ({ pageNumber = 1, pageSize = 11, category, country, search }) => {
@@ -64,4 +72,5 @@ export const {
   useConfirmRecipeTrnsMutation,
   useGetSingleRecipeQuery,
   useReactRecipeByUserMutation,
+  useGetCategoryBasedRecipeQuery,
 } = recipeApi;
