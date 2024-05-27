@@ -22,7 +22,7 @@ const Header = () => {
           <div className="md:flex md:items-center md:gap-12">
             <Link
               className="block font-bold text-3xl text-teal-600 pacifico-regular"
-              to="#"
+              to={paths.root}
             >
               HalalBites
             </Link>
@@ -63,7 +63,7 @@ const Header = () => {
                   <h2 className="hidden sm:flex text-sm">My Coins:</h2>
                   <div className="border bg-green-500 sm:text-sm rounded-3xl px-2 sm:px-3 py-1 text-xs sm:py-2 text-white font-semibold flex items-center gap-2">
                     <PiCoinsThin className="sm:text-xl" />
-                    {currentUser.coin}
+                    {currentUser?.coin}
                   </div>
                 </div>
                 <ProfilePopover />

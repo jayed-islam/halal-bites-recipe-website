@@ -2,15 +2,10 @@
 // import image from "../../assets/images/table-food.jpg";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { FaRegFlag } from "react-icons/fa";
-import { FaRegHeart } from "react-icons/fa6";
-import { FaHeart } from "react-icons/fa6";
 import { LuView } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
 import { paths } from "../../layouts/paths";
-import {
-  useConfirmRecipeTrnsMutation,
-  useReactRecipeByUserMutation,
-} from "../../redux/reducers/recipe/recipeApi";
+import { useConfirmRecipeTrnsMutation } from "../../redux/reducers/recipe/recipeApi";
 import { useContext } from "react";
 import { AppContext } from "../../context/auth-context";
 import toast from "react-hot-toast";
@@ -59,22 +54,6 @@ const AllRecipesSection = ({ recipes }) => {
     }
   };
 
-  const [makeReaction] = useReactRecipeByUserMutation();
-
-  const handleReaction = async (recipe) => {
-    const reactionData = {
-      userId: currentUser._id,
-    };
-    const result = await makeReaction({
-      id: recipe._id,
-      body: reactionData,
-    }).unwrap();
-
-    if (result.success) {
-      toast.success("Successfull!!!");
-      console.log("res", result);
-    }
-  };
   return (
     <div className="max-w-6xl mx-auto px-5 sm:px-20 md:px-11 lg:px-5 xl:px-0 mt-9 mb-16">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-5">
@@ -109,28 +88,9 @@ const AllRecipesSection = ({ recipes }) => {
                 </div>
 
                 <div className="flex items-center justify-between mt-3">
-                  <h2 className="font-semibold">Purched:</h2>
+                  <h2 className="font-semibold">Purchased:</h2>
                   <div className="flex -space-x-1 overflow-hidden">
-                    <img
-                      className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
-                      src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
-                    />
-                    <img
-                      className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
-                      src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
-                    />
-                    <img
-                      className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
-                      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
-                      alt=""
-                    />
-                    <img
-                      className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
-                    />
+                    {recipe.purchased_by.length}
                   </div>
                 </div>
 
@@ -142,16 +102,6 @@ const AllRecipesSection = ({ recipes }) => {
                     <LuView className="text-lg  group-hover:rotate-180" />
                     View The Recipe
                   </button>
-                  <div
-                    className="border-2 p-2 border-gray-500 rounded-lg"
-                    onClick={() => handleReaction(recipe)}
-                  >
-                    {recipe?.reactions?.includes(currentUser?._id) ? (
-                      <FaHeart className="text-xl text-green-500 transition-all duration-150" />
-                    ) : (
-                      <FaRegHeart className="text-xl hover:text-green-500 transition-all duration-150" />
-                    )}
-                  </div>
                 </div>
               </div>
             </div>

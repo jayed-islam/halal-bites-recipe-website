@@ -29,7 +29,6 @@ const DetailsRecipeView = ({ id }) => {
     const reactionData = {
       userId: user._id,
     };
-    console.log(reactionData);
     const result = await makeReaction({
       id: recipeId,
       body: reactionData,

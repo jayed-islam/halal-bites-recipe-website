@@ -3,7 +3,6 @@ import { IoCallOutline } from "react-icons/io5";
 import { IoLogoGithub } from "react-icons/io5";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { GoGlobe } from "react-icons/go";
-import { Link } from "react-router-dom";
 
 const HeroHeader = () => {
   return (
@@ -20,24 +19,27 @@ const HeroHeader = () => {
           </div>
         </div>
         <div className="flex items-center gap-3 py-2 sm:py-0">
-          <Link
-            to="/"
+          <a
+            href="https://jayedulislam.vercel.app/"
             className="w-7 h-7 bg-green-600 rounded-full hover:bg-green-700  text-white flex items-center justify-center group"
+            target="_blank"
           >
             <GoGlobe className="group-hover:scale-110 transition-all duration-150" />
-          </Link>
-          <Link
-            to="/"
+          </a>
+          <a
+            href="https://www.linkedin.com/in/jayedulislam/"
+            target="_blank"
             className="w-7 h-7 bg-green-600 rounded-full hover:bg-green-700  text-white flex items-center justify-center group"
           >
             <FaLinkedinIn className="group-hover:scale-110 transition-all duration-150" />
-          </Link>
-          <Link
-            to="/"
+          </a>
+          <a
+            href="https://github.com/jayed-islam"
             className="w-7 h-7 bg-green-600 rounded-full hover:bg-green-700  text-white flex items-center justify-center group"
+            target="_blank"
           >
             <IoLogoGithub className="group-hover:scale-110 transition-all duration-150" />
-          </Link>
+          </a>
         </div>
       </div>
     </div>
